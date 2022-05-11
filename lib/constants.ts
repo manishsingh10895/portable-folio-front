@@ -1,0 +1,1 @@
+export const SITE_CACHE_PATH = './data/site-details.json';
