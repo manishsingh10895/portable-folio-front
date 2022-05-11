@@ -76,6 +76,7 @@ const Gallery: NextPage<Props> = (props: Props) => {
                     </Grid>
                     {
                         lightboxOpen && previewSrc ?
+                            //@ts-ignore
                             <Lightbox
                                 imageCaption={previewCaption}
                                 mainSrcThumbnail={thumbSrc}

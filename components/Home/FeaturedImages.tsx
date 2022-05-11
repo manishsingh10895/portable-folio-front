@@ -47,6 +47,7 @@ export default function FeaturedImages(props: Props) {
 
             {
                 lightboxOpen && previewSrc ?
+                    //@ts-ignore
                     <Lightbox
                         mainSrcThumbnail={thumbSrc}
                         mainSrc={previewSrc}

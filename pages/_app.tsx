@@ -13,8 +13,9 @@ import { buildTheme } from "../lib/theme";
 function MyApp({ Component, pageProps }: AppProps) {
   const _theme = buildTheme();
   console.log(_theme);
-  return <AppContextProvider> 
+  return <AppContextProvider>
     <ChakraProvider theme={_theme} >
+      {/* @ts-ignore */}
       <Component {...pageProps} />
     </ChakraProvider>
   </AppContextProvider>
