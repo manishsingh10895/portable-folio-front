@@ -15,6 +15,7 @@ import getSiteData from '../lib/fetchTheme';
 import sanityService from '../lib/services/sanity.service';
 import HomeSection from '../components/Home/HomeSection';
 import Contact from '../components/Home/Contact';
+import AnimateInViewBox from '../components/AnimateInViewBox';
 
 type Props = {
   siteDetails: Partial<ISite>
@@ -48,15 +49,21 @@ const Home: NextPage<Props> = (props: Props) => {
             {props.siteDetails.siteDescription}
           </Text>
 
-          <Box className='safe-container'>
-            <FeaturedImages images={props.siteDetails.featuredImages as any} />
-          </Box>
+          <AnimateInViewBox>
+            <Box className='safe-container'>
+              <FeaturedImages images={props.siteDetails.featuredImages as any} />
+            </Box>
+          </AnimateInViewBox>
 
           <Box py={20} className='safe-container'>
-            <HomeSection blocks={props.siteDetails.home?.sections} />
+            <AnimateInViewBox>
+              <HomeSection blocks={props.siteDetails.home?.sections} />
+            </AnimateInViewBox>
           </Box>
           <Box py={20} className='safe-container'>
-            <Contact author={props.siteDetails.author as any} />
+            <AnimateInViewBox>
+              <Contact author={props.siteDetails.author as any} />
+            </AnimateInViewBox>
           </Box>
         </Flex>
       </Layout>

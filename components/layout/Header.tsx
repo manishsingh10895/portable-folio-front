@@ -14,15 +14,24 @@ export default function Header(props: Props) {
 
     return (
         <Flex padding={'20px 0'} flexDirection={'column'} w="100%" alignItems={'center'} justifyContent="center">
-            <Logo logo={siteDetails.logo} />
-            <Flex>
+            <NextLink passHref href={'/'}>
+                <Link>
+                    <Logo logo={siteDetails.logo} />
+                </Link>
+            </NextLink>
+            <Flex py={4}>
                 {
                     siteDetails.siteLinks?.map(s => {
                         return <NextLink
                             key={s.url}
                             href={s.url}
                             passHref>
-                            <Link padding="4px 8px">
+                            <Link
+                                _hover={{
+                                    textDecoration: "none",
+                                    color: "secondary.100"
+                                }}
+                                padding="4px 8px">
                                 {s.title}
                             </Link>
                         </NextLink>

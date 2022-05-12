@@ -66,5 +66,8 @@ export function buildTheme() {
 
     return extendTheme({
         colors,
+        shadows: {
+            outline: '0 0 0 0px var(--chakra-colors-green-500)'
+        },
     });
 }

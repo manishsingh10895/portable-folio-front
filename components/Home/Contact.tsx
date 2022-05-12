@@ -1,9 +1,10 @@
-import { Box, Flex, Icon, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Icon, Link, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import { IAuthor } from '../../models/author.model'
 import Envelope from '../ui/Envelope'
 import ContactForm from './ContactForm'
 import { FaEnvelope, FaEnvelopeOpen, FaLocationArrow, FaPhone } from 'react-icons/fa';
+import { getIconFromSocial } from '../../lib/utils'
 
 type Props = {
     author: IAuthor
@@ -11,7 +12,8 @@ type Props = {
 
 export default function Contact(props: Props) {
 
-    const { address, email, phone } = props.author;
+    const { address, email, phone, socials } = props.author;
+
     const flexStyles = {
         alignItems: 'center',
         marginTop: '15px',
@@ -50,6 +52,19 @@ export default function Contact(props: Props) {
                         <Text {...textStyles}>
                             {phone}
                         </Text>
+                    </Flex>
+
+
+                    <Flex py={6}>
+                        {
+                            Object.keys(socials)
+                                .filter(k => k !== '_type')
+                                .map((key, i) => {
+                                    return <Link px={2} href={socials[key]} key={i}>
+                                        <Icon color="primary.100" fontSize={'xl'} as={getIconFromSocial(key)}></Icon>
+                                    </Link>
+                                })
+                        }
                     </Flex>
                 </Stack>
             </Box>

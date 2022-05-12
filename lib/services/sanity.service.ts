@@ -14,6 +14,34 @@ class SanityService {
         return siteDetails;
     }
 
+    async fetchAuthorDetails(): Promise<any> {
+        try {
+            const query = `*[_type=="site" && id==$siteId][0] {
+                author-> {
+                    name,
+                    shortName,
+                    image,
+                    slug,
+                    socials,
+                    email,
+                    phone,
+                    bio,
+                    address
+                }                
+            }`
+
+            const siteId = process.env.PORTFOLIO_SITE_ID ? parseInt(process.env.PORTFOLIO_SITE_ID) : 1;
+
+            const data = await getClient().fetch(query, { siteId });
+
+            if (data.author) return data.author;
+
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async fetchGalleryDetails(): Promise<any> {
         try {
             const query = `*[_type=="gallery" && site->id==$siteId][0] {
