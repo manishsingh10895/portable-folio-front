@@ -72,7 +72,7 @@ export default function Contact(props: Props) {
                 sm: '0',
                 lg: "10"
             }}>
-                <ContactForm />
+                <ContactForm authorEmail={email} />
             </Box>
         </Flex>
     )

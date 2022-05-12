@@ -16,6 +16,7 @@ import sanityService from '../lib/services/sanity.service';
 import HomeSection from '../components/Home/HomeSection';
 import Contact from '../components/Home/Contact';
 import AnimateInViewBox from '../components/AnimateInViewBox';
+import LayoutAnimated from '../components/layout/LayoutAnimated';
 
 type Props = {
   siteDetails: Partial<ISite>
@@ -24,8 +25,7 @@ type Props = {
 const Home: NextPage<Props> = (props: Props) => {
   const { siteDetails } = props;
   const heroImage = siteDetails.heroImage ? urlFor(props.siteDetails.heroImage as string).height(500).url() : "";
-  console.log('[HOME SECTIONS]');
-  console.log(siteDetails.home);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -35,7 +35,7 @@ const Home: NextPage<Props> = (props: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout>
+      <LayoutAnimated>
         <Flex alignItems={'center'} flexDirection='column'
           justifyContent="center" width={'100%'} >
           <Box className={styles.heroImageContainer}>
@@ -66,7 +66,7 @@ const Home: NextPage<Props> = (props: Props) => {
             </AnimateInViewBox>
           </Box>
         </Flex>
-      </Layout>
+      </LayoutAnimated>
     </div>
   )
 }

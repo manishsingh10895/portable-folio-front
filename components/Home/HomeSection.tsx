@@ -12,13 +12,10 @@ export default function HomeSection(props: Props) {
     const serializers = {
         types: {
             image: (props: any) => {
-                console.log('[IMAGE PROPS]');
-                console.log(props);
                 const url = urlFor(props.node.asset) as any;
                 return <Image my={10} src={url} alt="asdasd"></Image>;
             },
             block: (props: any) => {
-                console.log(props);
                 let styles: CSSProperties = {
 
                 }

@@ -37,7 +37,6 @@ export default async function getSiteData() {
                 JSON.stringify(data),
                 'utf8'
             )
-            console.log('Wrote to members cache')
         } catch (error) {
             console.log('ERROR WRITING MEMBERS CACHE TO FILE')
             console.log(error)

@@ -17,7 +17,6 @@ export default function AnimateInViewBox(props: CustomChakraComponentProps) {
     const [ref, inView] = useInView();
 
     useEffect(() => {
-        console.log('IN VIEW', inView)
         if (inView) {
             controller.start('visible');
         }

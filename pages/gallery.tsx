@@ -9,6 +9,7 @@ import NextImage from 'next/image';
 import { urlFor } from "../sanity";
 import { useState } from "react";
 import Lightbox from 'react-image-lightbox';
+import LayoutAnimated from "../components/layout/LayoutAnimated";
 
 type Props = {
     galleryDetails: IGallery
@@ -22,13 +23,13 @@ const Gallery: NextPage<Props> = (props: Props) => {
 
     const [list, setList] = useState(images);
     const [previewCaption, setPreviewCaption] = useState('');
-    console.log(props.galleryDetails);
+
     return (
         <div>
             <Head>
                 <title> {site.seo?.title} | Gallery</title>
             </Head>
-            <Layout>
+            <LayoutAnimated>
                 <Box>
                     <Text py={2} fontWeight="bold" textAlign={'center'} fontSize={'2xl'}>
                         {title}
@@ -48,8 +49,7 @@ const Gallery: NextPage<Props> = (props: Props) => {
                                     .height(Math.floor(window.innerHeight * 0.8))
                                     .url()
                                     : '';
-                                console.log('[LARGE URL]');
-                                console.log(largeUrl);
+
                                 return <GridItem key={i}
                                     _hover={{
                                         cursor: 'pointer'
@@ -92,7 +92,7 @@ const Gallery: NextPage<Props> = (props: Props) => {
                             : null
                     }
                 </Box>
-            </Layout>
+            </LayoutAnimated>
         </div>
     )
 }

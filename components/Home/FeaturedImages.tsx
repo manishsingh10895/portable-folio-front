@@ -29,8 +29,6 @@ export default function FeaturedImages(props: Props) {
                             .height(Math.floor(window.innerHeight * 0.8))
                             .url()
                             : '';
-                        console.log('[LARGE URL]');
-                        console.log(largeUrl);
                         return <GridItem key={i}>
                             <Box margin={2}>
                                 <NextImage
@@ -62,11 +60,11 @@ export default function FeaturedImages(props: Props) {
                     : null
             }
 
-            <Flex justifyContent={'center'} padding={1}>
+            {/* <Flex justifyContent={'center'} padding={1}>
                 <Button colorScheme={'secondary'}>
                     See More
                 </Button>
-            </Flex>
+            </Flex> */}
         </Stack>
     )
 }

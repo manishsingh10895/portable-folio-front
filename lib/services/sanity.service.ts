@@ -59,7 +59,7 @@ class SanityService {
                 }
             }`;
             const siteId = process.env.PORTFOLIO_SITE_ID ? parseInt(process.env.PORTFOLIO_SITE_ID) : 1;
-            console.log(siteId);
+   
             const data = await getClient().fetch(query, { siteId });
             return data;
         } catch (err) {
@@ -104,12 +104,9 @@ class SanityService {
             }`;
 
             const siteId = process.env.PORTFOLIO_SITE_ID ? parseInt(process.env.PORTFOLIO_SITE_ID) : 1;
-            console.log(siteId);
             const data = await getClient().fetch(query, { siteId });
 
-            console.log(['SITE DATA']);
-            console.log(data);
-
+         
             return data;
         } catch (error) {
             throw error;
