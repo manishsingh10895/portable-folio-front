@@ -84,7 +84,6 @@ export default function GalleryImage(props: Props) {
             >
                 <Image
                     boxShadow={'lg'}
-                    loading='lazy'
                     onClick={() => {
                         props.onClick(largeUrl, image.Caption);
                     }}

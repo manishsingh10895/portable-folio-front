@@ -120,6 +120,8 @@ export const getServerSideProps = async (context) => {
         /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
     ));
 
+    console.log(galleryData.images.length);
+
     return {
         props: {
             galleryDetails: galleryData,
