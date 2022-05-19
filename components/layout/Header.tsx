@@ -1,10 +1,11 @@
-import { ChakraProps, Flex, Link } from '@chakra-ui/react'
+import { Box, ChakraProps, Flex, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import React from 'react'
 import { ISite, SiteLink } from '../../models/site.model'
 import Logo from '../Logo'
 import siteData from '../../data/site-details.json';
 import { useRouter } from 'next/router'
+import ThemeToggleButton from '../ThemeToggle'
 
 type Props = {
 
@@ -53,6 +54,9 @@ export default function Header(props: Props) {
                         </NextLink>
                     })
                 }
+                <Box ml={5}>
+                    <ThemeToggleButton />
+                </Box>
             </Flex>
         </Flex>
     )

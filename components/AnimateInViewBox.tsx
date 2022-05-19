@@ -5,7 +5,7 @@ import { CustomChakraComponentProps } from '../lib/types';
 import { useInView } from 'react-intersection-observer'
 
 const ChakraAnimatedDiv = chakra(motion.div, {
-    // shouldForwardProp: isValidMotionProp,
+    shouldForwardProp: () => true,
 });
 
 export default function AnimateInViewBox(props: CustomChakraComponentProps) {
@@ -15,12 +15,14 @@ export default function AnimateInViewBox(props: CustomChakraComponentProps) {
     }
     const controller = useAnimation();
     const [ref, inView] = useInView();
+    const { children, ...rest } = props;
 
     useEffect(() => {
         if (inView) {
             controller.start('visible');
         }
     }, [controller, inView]);
+    
     return (
         <ChakraAnimatedDiv
             ref={ref}
@@ -28,6 +30,7 @@ export default function AnimateInViewBox(props: CustomChakraComponentProps) {
             animate={controller}
             variants={variants}
             className="animate-in-view-box"
+            {...rest}
         >
             {props.children}
         </ChakraAnimatedDiv>

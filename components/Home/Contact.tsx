@@ -11,7 +11,6 @@ type Props = {
 }
 
 export default function Contact(props: Props) {
-
     const { address, email, phone, socials } = props.author;
 
     const flexStyles = {
@@ -54,13 +53,12 @@ export default function Contact(props: Props) {
                         </Text>
                     </Flex>
 
-
                     <Flex py={6}>
                         {
                             Object.keys(socials)
                                 .filter(k => k !== '_type')
                                 .map((key, i) => {
-                                    return <Link px={2} href={socials[key]} key={i}>
+                                    return <Link target={'_blank'} px={2} href={socials[key]} key={i}>
                                         <Icon color="primary.100" fontSize={'xl'} as={getIconFromSocial(key)}></Icon>
                                     </Link>
                                 })

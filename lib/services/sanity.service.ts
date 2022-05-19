@@ -48,7 +48,24 @@ class SanityService {
                 id,
                 title,
                 subtitle,
-                images,
+                "images": images[]{
+                    ...,
+                    'details': asset-> {
+                        metadata,
+                        ...
+                    }
+                },
+                "collections": collections[]->{
+                    description,
+                    name,
+                    'images': images[] {
+                        ...,
+                        'details': asset -> {
+                        metadata,
+                        ...
+                    }
+                  }
+                },
                 site-> {
                     id,
                     seo,
@@ -58,8 +75,9 @@ class SanityService {
                     }
                 }
             }`;
+            
             const siteId = process.env.PORTFOLIO_SITE_ID ? parseInt(process.env.PORTFOLIO_SITE_ID) : 1;
-   
+
             const data = await getClient().fetch(query, { siteId });
             return data;
         } catch (err) {
@@ -106,7 +124,7 @@ class SanityService {
             const siteId = process.env.PORTFOLIO_SITE_ID ? parseInt(process.env.PORTFOLIO_SITE_ID) : 1;
             const data = await getClient().fetch(query, { siteId });
 
-         
+
             return data;
         } catch (error) {
             throw error;

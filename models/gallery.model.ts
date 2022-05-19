@@ -1,3 +1,4 @@
+import { IImageCollection } from "./image-collection.model";
 import { ISite } from "./site.model";
 
 export interface IGallery {
@@ -5,5 +6,6 @@ export interface IGallery {
     subtitle: string,
     images: any[],
     site: ISite,
-    id: number
+    id: number,
+    collections: IImageCollection[],
 }

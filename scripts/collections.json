@@ -1,0 +1,32 @@
+{
+  "collections": [
+    {
+      "_createdAt": "2022-05-19T03:03:07Z",
+      "_id": "Qr5HZErql8NPjRYQufBJBC",
+      "_rev": "Qr5HZErql8NPjRYQufBJ62",
+      "_type": "imageCollection",
+      "_updatedAt": "2022-05-19T03:03:07Z",
+      "description": "",
+      "gallery": {
+        "_ref": "d26a3120-6c76-4aec-8119-684be86ebec6",
+        "_type": "reference"
+      },
+      "images": [],
+      "name": "Abstract"
+    },
+    {
+      "_createdAt": "2022-05-19T03:03:12Z",
+      "_id": "YvT3EEwfG7cpkPbzAQwsNM",
+      "_rev": "YvT3EEwfG7cpkPbzAQwsMp",
+      "_type": "imageCollection",
+      "_updatedAt": "2022-05-19T03:03:12Z",
+      "description": "",
+      "gallery": {
+        "_ref": "d26a3120-6c76-4aec-8119-684be86ebec6",
+        "_type": "reference"
+      },
+      "images": [],
+      "name": "Places"
+    }
+  ]
+}
