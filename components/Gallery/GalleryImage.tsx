@@ -4,11 +4,12 @@ import useResize from '../../lib/hooks/useResize';
 import { urlFor } from '../../sanity';
 import styles from './GalleryImage.module.scss';
 import { isValidMotionProp, motion, MotionStyle, MotionTransform, MotionValue, Variants } from 'framer-motion';
-
+import NextImage from 'next/image';
 type Props = {
     image: any,
     onClick: (previewUrl: string, caption: string) => void,
     columnCount: number,
+    maintainAspectRatio?: boolean,
 }
 
 const Figure = chakra('figure', {
@@ -22,15 +23,10 @@ const MotionBox = chakra(motion.div, {
 export default function GalleryImage(props: Props) {
     const { image } = props;
 
-    const [previewCaption, setPreviewCaption] = useState('');
-    const { width } = useResize();
-
-    const breakpoint = useBreakpoint();
-
     const thumbWidth = 250;
 
     const dim = image?.details?.metadata?.dimensions;
-    let h, w = thumbWidth;
+    let h = thumbWidth, w = thumbWidth;
 
     let H, W;
     if (typeof window != 'undefined') {
@@ -41,13 +37,16 @@ export default function GalleryImage(props: Props) {
     if (dim && dim.aspectRatio) {
         h = Math.floor(w / dim.aspectRatio);
     }
+    if (props.maintainAspectRatio == false) {
+        h = thumbWidth;
+    }
     if (dim && dim.height && dim.width && dim.aspectRatio) {
         W = Math.floor(H * dim.aspectRatio);
     }
     let url: any = urlFor(image)
         .height(h).width(w)
-        // .fit('min')
-        .rect(0, 0, dim.width, dim.height);
+    // .fit('min')
+    // .rect(0, 0, dim.width, dim.height);
 
     url = url.url();
 
@@ -63,17 +62,22 @@ export default function GalleryImage(props: Props) {
         exit: { opacity: 0, y: 50 },
     }
 
+    const containerStyles = props.maintainAspectRatio == false ? {
+        margin: '0.5rem',
+    } : {}
+
     return (
         <MotionBox
             initial="initial"
             animate="initial"
             display="table"
-            width={'100%'}
+            width={props.maintainAspectRatio == false ? 'auto' : '100%'}
             className={styles.imageContainer}
             style={{
                 pageBreakInside: "avoid",
                 breakInside: "avoid-column",
-                marginBottom: "1rem"
+                marginBottom: "1rem",
+                ...containerStyles
             }}
             whileHover="hover"
         >
@@ -83,11 +87,14 @@ export default function GalleryImage(props: Props) {
                 }}
             >
                 <Image
+                    cursor={'pointer'}
                     boxShadow={'lg'}
                     onClick={() => {
                         props.onClick(largeUrl, image.Caption);
                     }}
-                    width="100%"
+                    // loading="lazy"
+                    w={props.maintainAspectRatio == false ? w : '100%'}
+                    h={props.maintainAspectRatio == false ? h : 'auto'}
                     src={url} alt={image['caption']} />
                 {
                     image.Caption && props.columnCount > 1 ?

@@ -5,4 +5,5 @@ export interface IImageCollection {
     name: string,
     description?: string,
     images: SanityImageAssetDocument[],
+    slug: { current: string },
 }

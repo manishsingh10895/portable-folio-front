@@ -12,5 +12,5 @@ export const previewClient = createClient({
 });
 
 export const getClient = (userPreview: boolean = false) => {
-    return userPreview ? previewClient : sanityClient;
+return userPreview ? previewClient : sanityClient;
 }

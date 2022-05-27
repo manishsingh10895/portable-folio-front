@@ -52,10 +52,16 @@ const Gallery: NextPage<Props> = (props: Props) => {
                     {
                         collections.map((c, i) => {
                             return (
-                                <ImageCollection key={i}
-                                    collection={c}
-                                    isMobile={props.isMobile}
-                                />
+                                <Box>
+                                    <ImageCollection key={i}
+                                        collection={c}
+                                        isMobile={props.isMobile}
+                                    />
+
+                                    <Flex justifyContent={'center'}>
+                                        <Dots count={3} />
+                                    </Flex>
+                                </Box>
                             )
                         })
                     }

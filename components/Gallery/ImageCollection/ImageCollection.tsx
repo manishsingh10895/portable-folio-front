@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react'
 import React, { useRef } from 'react'
 import { IImageCollection } from '../../../models/image-collection.model'
 import AnimateInViewBox from '../../AnimateInViewBox'
@@ -7,6 +7,9 @@ import ResponsiveMasonryGrid from '../ResponsiveMasonryGrid'
 import Lightbox from 'react-image-lightbox';
 import useResize from '../../../lib/hooks/useResize'
 import { getImagePreviewUrl } from '../../../lib/utils'
+import CollectionPreviewImage from './CollectionPreviewImage'
+import { ArrowForwardIcon, ArrowLeftIcon } from '@chakra-ui/icons'
+import { useRouter } from 'next/router'
 
 type Props = {
     collection: IImageCollection,
@@ -24,6 +27,10 @@ export default function ImageCollection(props: Props) {
     const [imageIndex, setImageIndex] = React.useState(0);
     const list = collection.images;
 
+    console.log(collection);
+
+    const router = useRouter();
+
     return (
         <AnimateInViewBox py={10}>
             <Box width={'fit-content'}>
@@ -40,11 +47,13 @@ export default function ImageCollection(props: Props) {
                 {collection.description}
             </Text>
 
-            <ResponsiveMasonryGrid marginTop={10}>
+            <Flex justifyContent={'center'} marginTop={10}
+                flexWrap="wrap"
+            >
                 {
                     list.map((image, index) => {
                         // return <Box key={index}></Box>
-                        return <GalleryImage
+                        return <CollectionPreviewImage
                             image={image}
                             key={index}
                             columnCount={columnCount}
@@ -57,8 +66,22 @@ export default function ImageCollection(props: Props) {
                         />
                     })
                 }
-            </ResponsiveMasonryGrid>
-
+            </Flex>
+            <Flex justifyContent={'center'}>
+                <Button
+                    onClick={() => {
+                        router.push(`/gallery/collections/${collection.slug.current}`);
+                    }}
+                    variant={'ghost'}
+                    _hover={{
+                        color: "white",
+                        background: "primary.500"
+                    }}
+                    rightIcon={<ArrowForwardIcon/>}
+                    colorScheme={'primary'}>
+                    View All
+                </Button>
+            </Flex>
             {
                 lightboxOpen ?
                     //@ts-ignore
