@@ -41,7 +41,7 @@ const serializers = {
 export default function bio(props: Props) {
     const seo = siteData.seo;
     const { bio, name, image } = props.authorDetails;
-  
+
     return (
         <div>
             <Head>
@@ -56,7 +56,9 @@ export default function bio(props: Props) {
                     </Heading>
 
                     <Box py={10} width='100%' >
-                        <Image borderRadius={'32px'} boxShadow='md' width={'auto'} margin='0 auto' height={'350px'} src={urlFor(image).url()} alt={name}></Image>
+                        <Box position={'relative'} width={'auto'} overflow="hidden" maxW="350px" borderRadius={'32px'} height={'350px'} margin='0 auto' boxShadow='md'>
+                            <NextImage layout='fill' objectFit='cover' src={urlFor(image).url()} alt={name}></NextImage>
+                        </Box>
                     </Box>
 
                     <Box paddingTop={10}>

@@ -57,6 +57,7 @@ export default function CollectionPreviewImage(props: Props) {
             <Box
                 borderRadius={'lg'}
                 overflow="hidden"
+                position={'relative'}
                 height={'100%'} width="100%">
                 <NextImage
                     src={url}
